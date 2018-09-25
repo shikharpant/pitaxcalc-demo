@@ -1,6 +1,6 @@
 {
   "read": {
-    "RECID": {
+    "FILING_SEQ_NO": {
       "required": true,
       "type": "int",
       "desc": "Unique positive numeric identifier for filing unit",
@@ -11,6 +11,21 @@
       "type": "int",
       "desc": "Age group (0 ==> <60, 1 ==> 60-79, 2 ==> >=80)",
       "form": {"2017": "ITR-1 didn't see this on the form"}
+    },
+    "TOTAL_INCOME_OS": {
+      "type": "float",
+      "desc": "to be filled later",
+      "form": {"2017": "ITR random line"}
+    },
+    "INCOME_HP": {
+      "type": "float",
+      "desc": "",
+      "form": {"2017": ""}
+    },
+    "TOTAL_PROFITS_GAINS_BP": {
+      "type": "float",
+      "desc": "",
+      "form": {"2017": ""}
     },
     "AYEAR": {
       "type": "int",
