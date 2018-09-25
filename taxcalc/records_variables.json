@@ -64,6 +64,11 @@
       "desc": "Gross Total Income (GTI)",
       "form": {"2017": "ITR-1 line B4"}
     },
+    "Salaries_after_rebate": {
+      "type": "float",
+      "desc": "Net salary after rebate",
+      "form": {"2017": "ITR-1 line B4"}
+    },
     "TTI": {
       "type": "float",
       "desc": "Taxable Total Income (TTI)",
