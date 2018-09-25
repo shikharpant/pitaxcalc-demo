@@ -95,8 +95,8 @@ def pit_liability(calc):
            rate4 * np.maximum(0., taxinc - tbrk3))
     calc.array('pitax', tax)
 
-    def rebate(SALARIES):
-        "compute the rebate under section 87A of Income Tax Act"
-        Salaries_after_rebate = SALARIES
-        if SALARIES <500000 :
-            Salaries_after_rebate = SALARIES - 2000
+def rebate(SALARIES):
+    "compute the rebate under section 87A of Income Tax Act"
+    Salaries_after_rebate = SALARIES
+    if SALARIES <500000 :
+        Salaries_after_rebate = SALARIES - 2000
