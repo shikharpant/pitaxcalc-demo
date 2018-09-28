@@ -42,6 +42,13 @@ def total_other_income(TOTAL_INCOME_OS):
     # TODO: when using other_income as function argument, no calculations neeed
     return TOTAL_INCOME_OS
 
+@iterate_jit(nopython=True)
+def short_term_capital_gains(SHORT_TERM_15PER):
+    """
+    Compute short term capital gains under section 111A of IT Act.
+    """
+    STCG = SHORT_TERM_15PER
+    return STCG
 
 @iterate_jit(nopython=True)
 def gross_total_income(SALARIES, INCOME_HP, TOTAL_PROFTS_GAINS_BP,
@@ -91,6 +98,9 @@ def pit_liability(calc):
     rebate_rate = calc.policy_param('rebate_rate')
     rebate_thd = calc.policy_param('rebate_thd')
     rebate_ceiling = calc.policy_param('rebate_ceiling')
+    stcg = calc.array('STCG')
+    stcg_rate = calc.policy_param('_stcg_rate')
+    stcg_tax = stcg_rate*stcg
     surcharge_rate = calc.policy_param('surcharge_rate')
     surcharge_thd = calc.policy_param('surcharge_thd')
     rebate = np.where(taxinc > rebate_thd, 0.,
@@ -100,8 +110,10 @@ def pit_liability(calc):
                               np.maximum(0., taxinc - tbrk1)) +
            rate3 * np.minimum(tbrk3 - tbrk2,
                               np.maximum(0., taxinc - tbrk2)) +
-           rate4 * np.maximum(0., taxinc - tbrk3))
+           rate4 * np.maximum(0., taxinc - tbrk3)) + stcg_tax
+    calc.array('tax_TTI', tax)
     tax = np.where(rebate > tax, 0, tax - rebate)
     surcharge = np.where(taxinc > surcharge_thd, tax * surcharge_rate, 0.)
+    calc.array('surcharge', surcharge)
     tax = tax + surcharge
     calc.array('pitax', tax)

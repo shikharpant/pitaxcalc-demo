@@ -63,6 +63,37 @@
       "type": "float",
       "desc": "PIT liability",
       "form": {"2017": "ITR-1 line D11"}
+
     }
+    "tax_tti": {
+      "type": "float",
+      "desc": "tax liability on total income",
+      "form": {"2017": "ITR-3 Part B TTI-2d "}
+
+    }
+    "rebate": {
+      "type": "float",
+      "desc": "rebate as a non refundable tax credit",
+      "form": {"2017": "ITR-3 Part B TTI-2e "}
+
+    }
+    "surcharge": {
+      "type": "float",
+      "desc": "Surcharge on income above surcharge_thd",
+      "form": {"2017": "ITR-3 Part B TTI-2giii"}
+
+    }
+      "EDUCATION_CESS": {
+      "type": "float",
+      "desc": "Surcharge on income above surcharge_thd",
+      "form": {"2017": "ITR-3 Part B TTI-2giii"}
+
+    }
+        "SHORT_TERM_15PER": {
+    "type": "float",
+    "desc": "short term capital gains under section 111A",
+    "form": {"2017": "ITR-3 ??"}
+
+  }
   }
 }
